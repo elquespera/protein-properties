@@ -1,0 +1,15 @@
+body {
+    font-family: Arial;
+}
+#wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+#inputArea, #outputText {
+    padding: 16pt;
+}
+
+#inputArea {
+    text-transform: uppercase;
+}

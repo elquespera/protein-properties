@@ -35,10 +35,29 @@ function calculateMW (sequence) {
 }
 
 
-//Extinction coefficient of a peptide bond, M-1*cm-1
+// Amino acid contributions to extinction coefficient at 280nm
+const WYC_COEFF = {
+	W: 5500,
+	Y: 1490,
+	C: 125
+}
+
+// Calculate protein extinction coefficient at 280nm
+//using ε = (nW x 5500) + (nY x 1490) + (nC x 125)
+function calculateEcoeff280nm (sequence) {
+	let E = null;
+	sequence = sequence.toUpperCase();
+	Object.entries(WYC_COEFF).forEach(entry =>  {
+		let n = sequence.match(new RegExp(entry[0], 'g'));
+		if (n != null) E += n.length * entry[1];
+	})
+	return E;
+}	
+
+//Extinction coefficient of a peptide bond, M-1*cm-1 at 214nm
 ePeptideBond = 923; 
 
-//Extinction coefficients of individual amino acids, M-1*cm-1
+//Extinction coefficients of individual amino acids, M-1*cm-1 at 214nm
 const eAA = { 
 		A:32,
 		R:102,
@@ -61,9 +80,10 @@ const eAA = {
 		Y:5375,
 		V:43};
 
-// N-terminal proline contribution		
+// N-terminal proline contribution at 214nm	
 const eeP_Nterm = 30;
 
+// Calculate protein extinction coefficient at 214nm
 function calculateEcoeff214nm (sequence) {
 	let E = 0;
 	previousAA = false;

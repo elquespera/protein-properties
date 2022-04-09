@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Protein Molar Extinction coefficient at 214 nm</title>
+  <meta name="description" content="Calculate Protein Molar Extinction coefficient at 214 nm">
+  <meta name="author" content="Pavel Grinkevich">
+  <style media="all">
+  	body {
+  		font-family: Arial;
+  	}
+  	#wrapper {
+  		width: 100%;
+  		text-align: center;
+  	}
+
+  	#title, #inputArea, #outputText {
+  		padding: 16pt;
+  	}
+
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+	<main>
+    	<h1>Calculate protein properties</h1>	
+    	<textarea id="inputArea" rows=7 cols="70" 
+			placeholder="Input protein sequence here..."></textarea>
+    	<div id="molWeight"></div>
+		<div id="ext214"></div>
+	</main>
+  </div>
+  <script src="E214nm.js"></script>
+  <script>
+	inputArea = document.getElementById("inputArea");
+  	function updateProteinProperties() {
+		let MW = calculateMW(inputArea.value);
+  		let E = calculateEcoeff214nm(inputArea.value);
+		if (MW > 0) {MW = '<i>M = </i>' + MW} else {MW = ''}; 
+  		if (E > 0) {E = '<i>ε<sub>214</sub></i> = ' + E + ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>'} else {E = ''};
+  		document.getElementById("molWeight").innerHTML = MW;
+		document.getElementById("ext214").innerHTML = E;
+  	} 	
+	updateProteinProperties();
+  	inputArea.oninput = updateProteinProperties; 
+  </script>
+</body>
+</html>

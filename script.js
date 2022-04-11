@@ -48,10 +48,10 @@ const WYC_COEFF = {
 function calculateEcoeff280nm (sequence) {
 	let E = null;
 	sequence = sequence.toUpperCase();
-	Object.entries(WYC_COEFF).forEach(entry =>  {
-		let n = sequence.match(new RegExp(entry[0], 'g'));
-		if (n != null) E += n.length * entry[1];
-	})
+	for (let x in WYC_COEFF) {
+		let n = sequence.match(new RegExp(x, 'g'));
+		if (n !=null) E += n.length * WYC_COEFF[x];
+	}
 	return E;
 }	
 
@@ -91,7 +91,7 @@ function calculateEcoeff214nm (sequence) {
 	previousAA = false;
 	sequence = sequence.toUpperCase();
 	for (let i = 0; i < sequence.length; i++) {
-		aa = sequence.charAt(i);
+		let aa = sequence.charAt(i);
 		if (eAA[aa] != undefined) {
 			if (aa == 'P' & !previousAA) {
 				E += eeP_Nterm;

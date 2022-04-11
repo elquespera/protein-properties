@@ -1,15 +1,18 @@
 body {
     font-family: Arial;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #wrapper {
     width: 100%;
     text-align: center;
 }
 
-#inputArea, #outputText {
-    padding: 16pt;
-}
-
 #inputArea {
+    font-size: 80%;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1em;
     text-transform: uppercase;
+    width: 50em;
+    height: 15em;
+    resize: none;
 }

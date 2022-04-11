@@ -19,7 +19,8 @@ const MW_AA = {
 		T:101.047679,
 		W:186.079313,
 		Y:163.06332,
-		V:99.068414};
+		V:99.068414
+	}
 
 // Calculates molecular weight from a given sequence
 function calculateMW (sequence) {
@@ -78,7 +79,8 @@ const eAA = {
 		T:41,
 		W:29050,
 		Y:5375,
-		V:43};
+		V:43
+	}
 
 // N-terminal proline contribution at 214nm	
 const eeP_Nterm = 30;

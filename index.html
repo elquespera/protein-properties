@@ -27,9 +27,9 @@
 		let molWeight = calculateMW(inputArea.value);
 		let e280 = calculateEcoeff280nm(inputArea.value);
   		let e214 = calculateEcoeff214nm(inputArea.value);
-		if (molWeight > 0) {molWeight = '<i>M = </i>' + (Math.round(molWeight * 100 + Number.EPSILON ) / 100)} else {molWeight = ''}; 
-		if (e280 != null) {e280 = '<i>ε<sub>280</sub></i> = ' + e280 + ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>'} else {e280 = ''};
-  		if (e214 > 0) {e214 = '<i>ε<sub>214</sub></i> = ' + e214 + ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>'} else {e214 = ''};
+		if (molWeight > 0) {molWeight = '<i><b>M</b> = </i>' + (Math.round(molWeight * 100 + Number.EPSILON ) / 100)} else {molWeight = ''}; 
+		if (e280 != null) {e280 = '<i><b>ε<sub>280</sub></b></i> = ' + e280 + ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>'} else {e280 = ''};
+  		if (e214 > 0) {e214 = '<i><b>ε<sub>214</sub></b></i> = ' + e214 + ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>'} else {e214 = ''};
   		document.getElementById("molWeight").innerHTML = molWeight;
 		document.getElementById("ext280").innerHTML = e280;
 		document.getElementById("ext214").innerHTML = e214;

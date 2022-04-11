@@ -16,3 +16,12 @@ body {
     height: 15em;
     resize: none;
 }
+
+footer img {
+    height: 1.6em;
+    width: 1.6em;
+    position: absolute;
+    float: right;
+    bottom: 1.2em;
+    right: 1.2em;
+}

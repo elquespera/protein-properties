@@ -22,20 +22,29 @@
   </footer>
   <script src="script.js "></script>
   <script>
-	inputArea = document.getElementById("inputArea");
+	const inputArea = document.getElementById('inputArea');
+	//Object that contains functions and refs for each protein property
+	const proteinProperties = {
+		WM: [document.getElementById('molWeight'), calculateMW, '<i><b>M</b> = </i>', ''],
+		e280: [document.getElementById('ext280'), calculateEcoeff280nm, '<i><b>ε<sub>280</sub></b></i> = ', ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>'],
+		e214: [document.getElementById('ext214'), calculateEcoeff214nm, '<i><b>ε<sub>214</sub></b></i> = ', ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>']
+	}
+	//Calculate proterties and update output fields
   	function updateProteinProperties() {
-		let molWeight = calculateMW(inputArea.value);
-		let e280 = calculateEcoeff280nm(inputArea.value);
-  		let e214 = calculateEcoeff214nm(inputArea.value);
-		if (molWeight > 0) {molWeight = '<i><b>M</b> = </i>' + (Math.round(molWeight * 100 + Number.EPSILON ) / 100)} else {molWeight = ''}; 
-		if (e280 != null) {e280 = '<i><b>ε<sub>280</sub></b></i> = ' + e280 + ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>'} else {e280 = ''};
-  		if (e214 > 0) {e214 = '<i><b>ε<sub>214</sub></b></i> = ' + e214 + ' <i>M<sup>-1</sup> cm<sup>-1</sup></i>'} else {e214 = ''};
-  		document.getElementById("molWeight").innerHTML = molWeight;
-		document.getElementById("ext280").innerHTML = e280;
-		document.getElementById("ext214").innerHTML = e214;
+		for (let prop in proteinProperties) {
+			let propValue = proteinProperties[prop][1](inputArea.value);
+			if (propValue != null) {
+				proteinProperties[prop][0].innerHTML = 
+					proteinProperties[prop][2] + 
+					(Math.round(propValue * 100 + Number.EPSILON) / 100) + 
+					proteinProperties[prop][3];
+			} else {
+				proteinProperties[prop][0].innerHTML = '';
+			}
+		}
   	} 	
 	updateProteinProperties();
-  	inputArea.oninput = updateProteinProperties; 
+  	inputArea.oninput = updateProteinProperties;
   </script>
 </body>
 </html>

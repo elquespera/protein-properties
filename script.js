@@ -24,7 +24,7 @@ const MW_AA = {
 
 // Calculates molecular weight from a given sequence
 function calculateMW (sequence) {
-	let MW = 0;
+	let MW = null;
 	sequence = sequence.toUpperCase();
 	for (let i = 0; i < sequence.length; i++) {
 		aa = sequence.charAt(i);
@@ -87,7 +87,7 @@ const eeP_Nterm = 30;
 
 // Calculate protein extinction coefficient at 214nm
 function calculateEcoeff214nm (sequence) {
-	let E = 0;
+	let E = null;
 	previousAA = false;
 	sequence = sequence.toUpperCase();
 	for (let i = 0; i < sequence.length; i++) {
